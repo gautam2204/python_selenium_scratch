@@ -4,12 +4,14 @@ from util.BaseDriver import chromeDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 import selenium.webdriver.support.expected_conditions as EC
+import logging
 
 
 @pytest.fixture()
 def setThisasFixtureFrame():
     global driver
     driver = chromeDriver()
+    logging.info("[Since No scope mentioned yield will be executed everytime post end of test]")
     yield
     driver.quit()
     
