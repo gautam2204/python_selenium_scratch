@@ -24,3 +24,7 @@ def test_2ndCaseFromFixtture(setThisasFixture):
     elmHeading = driver.find_element(By.XPATH,"//div[@class='main-header']")
     assert "Practice Form"==elmHeading.text
  
+ 
+def test_handle_window():
+    driver.get("https://demoqa.com/browser-windows")
+    
