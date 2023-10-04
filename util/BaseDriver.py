@@ -3,8 +3,9 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
+
 def deleteFilesinReports(directory):
-    file_list=os.listdir(directory)
+    file_list = os.listdir(directory)
     for file_name in file_list:
         file_path = os.path.join(directory, file_name)
         try:
@@ -15,7 +16,8 @@ def deleteFilesinReports(directory):
         except Exception as e:
             print(f"Error deleting {file_name}: {e}")
 
-def chromeDriver()->WebDriver:
+
+def chromeDriver() -> WebDriver:
     log_directory = "reports"
 
     # Create the log directory if it doesn't exist
@@ -26,14 +28,13 @@ def chromeDriver()->WebDriver:
 
     # Full path to the log file
     log_path = os.path.join(log_directory, log_file_name)
-    serv = Service(executable_path="driver\chromedriver.exe"
-               ,log_output=log_path
-               ,)
+    serv = Service(executable_path="D:\\pyhton_projects\\python_selenium_scratch\\driver\\chromedriver-win64\\chromedriver.exe"
+                   , log_output=log_path
+                   )
 
     option = Options()
     # option.add_argument('--headless')
+    option.accept_insecure_certs = True
     option.add_argument('start-maximized')
-
-    return WebDriver(options=option,service=serv)
-
-
+    option.binary_location = "D:\\pyhton_projects\\python_selenium_scratch\\driver\\chrome-win64\\chrome.exe"
+    return WebDriver(options=option, service=serv)

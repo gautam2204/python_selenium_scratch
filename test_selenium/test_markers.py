@@ -27,5 +27,12 @@ def test_validateSum2():
 def test_validateSum3():
     assert inc(2) == 5
    
-    
+def dataGenerator():
+    li = [['userName1','password1'],['userName2','password2']]
+    return li
+
+@pytest.mark.parametrize("data",dataGenerator())
+def test_parametrizedCalidation(data):
+    print("####################Test Code#######################")
+    print(f"List values {data[0]}")    
 
